@@ -1,7 +1,7 @@
 let selectedCoupon = [];
 
 function startPlay(coupons) {
-    selectedCoupon = selectedCoupon === [] ? coupons : selectedCoupon;
+    selectedCoupon = selectedCoupon.length === 0 ? coupons : selectedCoupon;
     // 点击事件
     const e = document.createEvent("MouseEvents");
     e.initEvent("click", true, true);
@@ -27,8 +27,8 @@ function startPlay(coupons) {
 }
 
 function startAlarm() {
-    chrome.runtime.sendMessage({type: "couponAlarm"}, res => {
-        console.log(res);
+    chrome.runtime.sendMessage({type: "couponAlarm"}, function (response) {
+        console.log(response);
     });
 }
 
@@ -41,4 +41,5 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
-document.addEventListener('DOMContentLoaded', startAlarm);
+window.setTimeout(() => startAlarm(), 20000)
+

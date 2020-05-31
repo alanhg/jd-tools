@@ -8,7 +8,7 @@ function onSubmit() {
     })
     chrome.storage.sync.set({
         coupons: savedCoupons
-    });
+    }, () => alert('Saved success!'));
 }
 
 function restoreOptions() {
@@ -24,4 +24,4 @@ function restoreOptions() {
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions);
-document.getElementById('couponForm').addEventListener('click', onSubmit);
+document.getElementById('save').addEventListener('click', onSubmit);

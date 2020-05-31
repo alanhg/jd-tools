@@ -13,11 +13,6 @@
     "48": "icon.png",
     "128": "icon.png"
   },
-  "externally_connectable": {
-    "matches": [
-      "https://plus.m.jd.com/coupon/*"
-    ]
-  },
   "content_scripts": [
     {
       "matches": [
