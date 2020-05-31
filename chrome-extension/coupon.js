@@ -1,7 +1,6 @@
 let selectedCoupon = [];
 
-function startPlay(coupons) {
-    selectedCoupon = selectedCoupon.length === 0 ? coupons : selectedCoupon;
+function startPlay() {
     // 点击事件
     const e = document.createEvent("MouseEvents");
     e.initEvent("click", true, true);
@@ -9,7 +8,7 @@ function startPlay(coupons) {
     let couponsElements = document.getElementsByClassName('full-coupon-list')[0].children;
 
     if (selectedCoupon.length === 0) {
-        alert('没有需要抢的券了！')
+        alert('请设置券类型！')
         return;
     }
     selectedCoupon.forEach(idx => {
@@ -32,12 +31,16 @@ function startAlarm() {
     });
 }
 
+chrome.storage.sync.get({coupons: []}, function ({coupons}) {
+    selectedCoupon = coupons;
+});
+
 /**
  * 定时器发起抢券
  */
 chrome.runtime.onMessage.addListener(
     function (request, sender, sendResponse) {
-        startPlay(request.coupons);
+        startPlay();
     }
 );
 
