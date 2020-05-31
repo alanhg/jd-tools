@@ -1,13 +1,15 @@
 let count = 0;
-const alarmInfo = {
-    delayInMinutes: 1,
-    periodInMinutes: 1
-};
+
+function createAlarms() {
+    [0, 10, 16, 20, 22].forEach(item => {
+        chrome.alarms.create(`couponAlarm_${item}`, {when: new Date().setHours(item)});
+    })
+}
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.type === 'couponAlarm') {
         chrome.alarms.clearAll();
-        chrome.alarms.create('couponAlarm', alarmInfo);
+        createAlarms();
         chrome.alarms.onAlarm.addListener(function (alarm) {
             console.log(`第${count + 1}次`);
             chrome.tabs.sendMessage(sender.tab.id, {count});
