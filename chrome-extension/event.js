@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
         chrome.alarms.create('couponAlarm', alarmInfo);
         chrome.alarms.onAlarm.addListener(function (alarm) {
             console.log(`第${count + 1}次`);
-            chrome.tabs.sendMessage(sender.tab.id);
+            chrome.tabs.sendMessage(sender.tab.id, {});
         });
         sendResponse({
             type: 'started'

@@ -26,9 +26,7 @@ function startPlay() {
 }
 
 function startAlarm() {
-    chrome.runtime.sendMessage({type: "couponAlarm"}, function (response) {
-        console.log(response);
-    });
+    chrome.runtime.sendMessage({type: "couponAlarm"});
 }
 
 chrome.storage.sync.get({coupons: []}, function ({coupons}) {
@@ -44,5 +42,6 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+// 20秒后开始开启定时闹钟
 window.setTimeout(() => startAlarm(), 20000)
 
