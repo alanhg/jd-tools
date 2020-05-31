@@ -16,4 +16,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             type: 'started'
         })
     }
+
+    if (message.type === 'stopCouponAlarm') {
+        chrome.alarms.clearAll();
+    }
 });

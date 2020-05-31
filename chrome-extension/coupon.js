@@ -8,6 +8,7 @@ function startPlay() {
     let couponsElements = document.getElementsByClassName('full-coupon-list')[0].children;
 
     if (selectedCoupon.length === 0) {
+        chrome.runtime.sendMessage({type: "stopCouponAlarm"});
         alert('请设置券类型！')
         return;
     }
