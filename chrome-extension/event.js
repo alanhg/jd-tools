@@ -4,8 +4,7 @@ const alarmInfo = {
     periodInMinutes: 1
 };
 
-console.log('background js');
-chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+chrome.extension.onMessage.addListener(function (message, sender, sendResponse) {
     console.dir(sender);
     if (message.type === 'couponAlarm') {
         chrome.alarms.clearAll();
