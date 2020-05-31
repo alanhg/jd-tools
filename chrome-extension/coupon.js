@@ -42,6 +42,4 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
-// 20秒后开始开启定时闹钟
-window.setTimeout(() => startAlarm(), 20000)
-
+window.addEventListener('load', startAlarm);

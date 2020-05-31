@@ -18,6 +18,7 @@
       "matches": [
         "https://vip.m.jd.com/newPage/reward"
       ],
+      "run_at": "document_end",
       "css": [
       ],
       "js": [
