@@ -13,6 +13,11 @@
     "48": "icon.png",
     "128": "icon.png"
   },
+  "externally_connectable": {
+    "matches": [
+      "https://plus.m.jd.com/coupon/*"
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
@@ -22,25 +27,33 @@
       ],
       "js": [
         "yaoyiyao.js"
-      ]
+      ],
+      "all_frames": true
     },
     {
       "matches": [
-        "https://plus.m.jd.com/coupon/index/*"
+        "https://plus.m.jd.com/coupon/*"
       ],
       "css": [
       ],
       "js": [
         "coupon.js"
-      ]
+      ],
+      "all_frames": true
     }
   ],
   "options_ui": {
     "page": "options.html",
-    "open_in_tab": true
+    "open_in_tab": false
   },
   "permissions": [
     "storage",
     "alarms"
-  ]
+  ],
+  "background": {
+    "scripts": [
+      "event.js"
+    ],
+    "persistent": false
+  }
 }

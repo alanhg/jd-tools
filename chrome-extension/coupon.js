@@ -1,4 +1,7 @@
-function startPlay(selectedCoupon) {
+let selectedCoupon = [];
+
+function startPlay(coupons) {
+    selectedCoupon = selectedCoupon === [] ? coupons : selectedCoupon;
     // 点击事件
     const e = document.createEvent("MouseEvents");
     e.initEvent("click", true, true);
@@ -6,6 +9,7 @@ function startPlay(selectedCoupon) {
     let couponsElements = document.getElementsByClassName('full-coupon-list')[0].children;
 
     if (selectedCoupon.length === 0) {
+        alert('没有需要抢的券了！')
         return;
     }
     selectedCoupon.forEach(idx => {
@@ -21,3 +25,20 @@ function startPlay(selectedCoupon) {
         }
     })
 }
+
+function startAlarm() {
+    chrome.runtime.sendMessage({type: "couponAlarm"}, res => {
+        console.log(res);
+    });
+}
+
+/**
+ * 定时器发起抢券
+ */
+chrome.runtime.onMessage.addListener(
+    function (request, sender, sendResponse) {
+        startPlay(request.coupons);
+    }
+);
+
+document.addEventListener('DOMContentLoaded', startAlarm);
