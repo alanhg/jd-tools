@@ -8,7 +8,10 @@ function onSubmit() {
     })
     chrome.storage.sync.set({
         coupons: savedCoupons
-    }, () => alert('Saved success!'));
+    }, () => {
+        document.getElementById('saveTip').className = '';
+        window.setTimeout(() => document.getElementById('saveTip').className = 'hide', 3000)
+    });
 }
 
 function restoreOptions() {

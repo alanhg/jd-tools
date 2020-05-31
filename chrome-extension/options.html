@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Options</title>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 说明：选择了优惠券类别，打开优惠券页面，插件将会在券发放时间【0点，10点，16点，20点，22点】进行领取，默认只领取一张
 优惠券类别：
-<form id="couponForm">
+<div>
+
     <label>
         <input name="coupon" type="checkbox" value="0">5元
     </label>
@@ -25,7 +31,10 @@
     </label>
 
     <button id="save">Save</button>
-</form>
+    <span id="saveTip" class="hide">
+        Save success!
+    </span>
+</div>
 <script src="./options.js"></script>
 </body>
 </html>
